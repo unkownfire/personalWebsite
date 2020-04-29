@@ -1,0 +1,7 @@
+.example-container {
+  position: absolute;
+  min-height: 90%;
+  width: 100%;
+
+  background-color: #fefbd8;
+}
