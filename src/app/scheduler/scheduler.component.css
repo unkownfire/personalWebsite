@@ -1,7 +1,23 @@
+/*@import '~@angular/material/theming';*/
 .example-container {
   position: absolute;
   min-height: 90%;
   width: 100%;
 
   background-color: #fefbd8;
+}
+.buttonContainer {
+    text-align: center;
+}
+.formContainer {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+
+}
+.sideBarContainer{
+  margin: 10px;
 }
