@@ -8,7 +8,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Class Number</mat-label>
               <mat-hint> Required </mat-hint>
-              <input matInput placeholder="AAA0000">
+              <input matInput placeholder="AAA0000" [(ngModel)] = "classNum">
             </mat-form-field>
           </div>
           <div>
@@ -19,7 +19,7 @@
               <mat-hint>
                 Required
               </mat-hint>
-              <mat-select>
+              <mat-select [(ngModel)] = "semester">
                 <mat-option value = "Summer">
                   Summer
                 </mat-option>
@@ -43,8 +43,8 @@
       </div>
     </mat-sidenav>
     <mat-sidenav-content >
-      <p>Main Content<p>
-      <p>a</p>
+      <p>{{classNum}}<p>
+      <p>{{semester}}</p>
       <p>a</p>
       <p>a</p>
       aside
