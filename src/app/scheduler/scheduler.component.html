@@ -1,7 +1,11 @@
+  <mat-sidenav-container class = "example-container" >
+    <mat-sidenav  mode="side"
+    opened
+    [fixedInViewport]="true"
+    [fixedTopGap]="60"
 
-<div>
-  <mat-sidenav-container class = "example-container">
-    <mat-sidenav  mode="side" opened>
+    class = "example-sidenav"
+    >
       <div class = "sideBarContainer">
         <div class = "formContainer" >
           <div>
@@ -33,7 +37,7 @@
             </mat-form-field>
           </div>
           <div class = "buttonContainer">
-            <button mat-fab color = "accent" >
+            <button mat-fab color = "accent" (click) = "getCourses()">
               <mat-icon>
                 search
               </mat-icon>
@@ -42,13 +46,26 @@
         </div>
       </div>
     </mat-sidenav>
-    <mat-sidenav-content >
-      <p>{{classNum}}<p>
-      <p>{{semester}}</p>
-      <p>a</p>
-      <p>a</p>
-      aside
+    <mat-sidenav-content>
+      <div>
+        <mat-card *ngFor="let course of courses">
+          <mat-card-header>
+            <mat-card-title>
+              {{course.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <div class="prereq">
+                {{course.prerequisites}}
+              </div>
+              <div>
+                {{course.description}}
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+        </mat-card>
+
+      </div>
 
     </mat-sidenav-content>
+    <footer>hello</footer>
   </mat-sidenav-container>
-</div>

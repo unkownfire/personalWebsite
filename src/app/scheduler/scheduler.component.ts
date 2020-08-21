@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpParams} from "@angular/common/http";
+import { SchedulerService } from './scheduler.service';
+import {Course} from './course';
+import { Observable, of } from "rxjs";
+import { MatCardModule } from '@angular/material/card';
 @Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
@@ -11,26 +15,37 @@ import {HttpParams} from "@angular/common/http";
 export class SchedulerComponent implements OnInit {
   semester: string;
   classNum: string;
-  test: string;
-  constructor() { }
+  test: number;
+  now: Date = new Date();
+  courses: Array<Course> = new Array<Course>();
+
+  constructor(private schedulerService: SchedulerService) { }
 
   ngOnInit(): void {
   }
-  getConfig() {
-    let dateParam = 0;
-    switch(this.semester)
-    {
-      case 'Fall': dateParam = 1;
-      case 'Summer': dateParam = 8;
-      case 'Spring': dateParam = 3;
-    }
-    let semParam = '2' + dateParam + '20';
-    let params = new HttpParams();
-    params = params.append('Term',semParam);
-    params = params.append('Category', 'CWSP');
 
-    return "";
-    //this.Http.get("https://one.ufl.edu/apix/soc/schedule/Term=2520&Category=CWSP");
+  getCourses(): void {
+    //this.schedulerService.setParams(this.classNum, this.semester);
+
+    //this.schedulerService.getCourses().subscribe(courses => this.courses = courses);
+    this.schedulerService.getCourses().subscribe((data) => {
+      console.log(data[0].COURSES[0]);
+      const coursesObs = of(data[0].COURSES);
+      console.log("hello");
+      data[0].COURSES.forEach(element => {
+        this.courses.push({
+          "code":element.code,
+          "courseId":element.courseId,
+          "name":element.name,
+          "termInd":element.termInd,
+          "description":element.description,
+          "prerequisites":element.prerequisites,
+          "sections":element.sections
+        });
+      });
+
+    });
+
 
   }
 }
