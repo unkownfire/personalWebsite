@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpParams} from "@angular/common/http";
+import { HttpParams } from "@angular/common/http";
 import { SchedulerService } from './scheduler.service';
-import {Course} from './course';
+import { Course } from './course';
 import { Observable, of } from "rxjs";
 import { MatCardModule } from '@angular/material/card';
 @Component({
@@ -15,19 +15,24 @@ import { MatCardModule } from '@angular/material/card';
 export class SchedulerComponent implements OnInit {
   semester: string;
   classNum: string;
+  program: string;
   test: number;
   now: Date = new Date();
   courses: Array<Course> = new Array<Course>();
 
-  constructor(private schedulerService: SchedulerService) { }
+  constructor(private schedulerService: SchedulerService) {
+  //  getCourses();
+  }
 
   ngOnInit(): void {
+
   }
 
   getCourses(): void {
     //this.schedulerService.setParams(this.classNum, this.semester);
 
     //this.schedulerService.getCourses().subscribe(courses => this.courses = courses);
+    this.courses = new Array<Course>();
     this.schedulerService.getCourses().subscribe((data) => {
       console.log(data[0].COURSES[0]);
       const coursesObs = of(data[0].COURSES);
@@ -45,7 +50,8 @@ export class SchedulerComponent implements OnInit {
       });
 
     });
-
-
+  }
+  ngAfterContentInit(): void {
+    this.getCourses();
   }
 }

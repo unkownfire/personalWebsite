@@ -1,71 +1,72 @@
   <mat-sidenav-container class = "example-container" >
-    <mat-sidenav  mode="side"
-    opened
-    [fixedInViewport]="true"
-    [fixedTopGap]="60"
-
-    class = "example-sidenav"
-    >
-      <div class = "sideBarContainer">
-        <div class = "formContainer" >
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>Class Number</mat-label>
-              <mat-hint> Required </mat-hint>
-              <input matInput placeholder="AAA0000" [(ngModel)] = "classNum">
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>
-                Semester
-              </mat-label>
-              <mat-hint>
-                Required
-              </mat-hint>
-              <mat-select [(ngModel)] = "semester">
-                <mat-option value = "Summer">
-                  Summer
-                </mat-option>
-                <mat-option value = "Fall">
-                  Fall
-                </mat-option>
-                <mat-option value = "Spring">
-                  Spring
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class = "buttonContainer">
-            <button mat-fab color = "accent" (click) = "getCourses()">
-              <mat-icon>
-                search
-              </mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content background-color = "black">
       <div>
-        <mat-card *ngFor="let course of courses">
-          <mat-card-header>
-            <mat-card-title>
-              {{course.name}}
-            </mat-card-title>
-            <mat-card-subtitle>
-              <div class="prereq">
-                {{course.prerequisites}}
-              </div>
-              <div>
-                {{course.description}}
-              </div>
-            </mat-card-subtitle>
-          </mat-card-header>
-        </mat-card>
+        <main class="content">
+          <div class = "sidenav-view">
+            <div class = "sidenav-class">
+              <mat-nav-list>
+                <div class = "formContainer">
+                  <div class = "form-content">
+                    <mat-form-field appearance="fill" class = "field">
+                      <mat-label> Semester </mat-label>
+                      <mat-hint> Required </mat-hint>
+                      <mat-select [(ngModel)] = "semester">
+                        <mat-option value = "Summer"> Summer </mat-option>
+                        <mat-option value = "Fall"> Fall </mat-option>
+                        <mat-option value = "Spring"> Spring </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class = "form-content">
+                    <mat-form-field appearance = "fill">
+                      <mat-label> Program </mat-label>
+                      <mat-hint> Required </mat-hint>
+                      <mat-select [(ngModel)] = "program">
+                        <mat-option value = "CWSP"> Campus/Web/Special Program </mat-option>
+                        <mat-option value = "UFO"> UF online </mat-option>
+                        <mat-option value = "IA"> Innovation Academy </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class = "form-content">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Class Number</mat-label>
+                      <input matInput placeholder="AAA0000" [(ngModel)] = "classNum">
+                    </mat-form-field>
+                  </div>
 
+                  <div class = "buttonContainer">
+                    <button mat-fab color = "accent" (click) = "getCourses()">
+                      <mat-icon>
+                        search
+                      </mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </mat-nav-list>
+            </div>
+          </div>
+          <div>
+            <mat-card *ngFor="let course of courses">
+              <mat-card-header>
+                <mat-card-title>
+                  {{course.name}}
+                </mat-card-title>
+                <mat-card-subtitle>
+                  <div class="prereq">
+                    {{course.prerequisites}}
+                  </div>
+                  <div>
+                    {{course.description}}
+                  </div>
+                </mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+          </div>
+
+        </main>
+        <app-footer>
+        </app-footer>
       </div>
-
     </mat-sidenav-content>
-    <footer>hello</footer>
   </mat-sidenav-container>

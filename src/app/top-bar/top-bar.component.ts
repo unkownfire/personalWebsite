@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-top-bar',

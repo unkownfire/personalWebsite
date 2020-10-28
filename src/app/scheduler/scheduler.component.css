@@ -1,29 +1,53 @@
 /*@import '~@angular/material/theming';*/
-.example-sidenav {
+:host{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
 }
 .example-container {
-  position: absolute;
-  top: 60px;
-  bottom: 0px;
-  left: 0;
-  right: 0;
+
 }
-.buttonContainer {
-    text-align: center;
+.content {
+  display: flex;
+  flex: 1 1 auto;
+}
+.sidenav-view{
+  position: -webkit-sticky;
+  position: sticky;
+  width: fit-content;
+  height: fit-content;
+  top: 0;
+
+}
+.sidenav-class {
+  width: 240px;
+  height: 1000px;
+  overflow: auto;
+  padding: 2px;
 }
 .formContainer {
   border-radius: 25px;
   border: 2px solid #73AD21;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.form-content {
+  display: flex;
+  justify-content: center;
+
+}
+.buttonContainer {
+    text-align: center;
 }
 .sideBarContainer{
   margin: 10px;
 }
 .prereq{
   color: red;
+}
+.field {
+  background-color: white;
 }
